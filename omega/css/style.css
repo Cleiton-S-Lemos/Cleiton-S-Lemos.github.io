@@ -1,0 +1,230 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Orbitron&display=swap');
+
+/* Alteração do Box Model para border-box */
+/* Sempre usar!!!!!! */
+
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+}
+
+/* fontes do google: google fonts
+Sempre que tem espaço no nome tem que usar aspas */
+
+/* background-attachment: para fixar a imagem de fundo */
+/* quando for fazer um site, sempre trabalhe primeiro para celurares (botão f12 e acione o botão) comece dele e depois faz o ajustes para descktop*/
+
+body {
+    font-family: 'Open Sans', Verdana, sans-serif;
+    background-image: url(../imagens/textura-fundo.png);
+    background-attachment: fixed;
+}
+ 
+/* serve para deixar a imagem do tamanho da tela (responsivas) */
+img { max-width: 100%; }
+
+/* CSS Reset */
+/* tirar todos os espaços */
+body, h1, h2, h3, p, figure {
+    margin: 0;
+    padding: 0;
+}
+
+/* Tirar anderline dos navegadores e mudar a cor */
+
+a {
+    text-decoration: none;
+    color: rgb(78, 9, 75);
+}
+
+/* mudar cores do rodapé e cabeçalho. Centralizar */
+
+header, footer {
+    background-color: rgb(230, 217, 193);
+    text-align: center;
+}
+
+/*  dar espaçamento f=da parte do cabeçalho para o conteúdo */
+header {
+    border-bottom: solid 1px;
+    margin-bottom: 10px;
+}
+
+footer { border-top: solid 1px;}
+
+/* diferença entre px e %; px=fixa %=variado- */
+article {
+    background-color: white;
+    padding: 2%;
+    box-shadow: grey 1px 1px 5px;
+    /* primeiro valor em cima/baixo o segundo dos lados */
+    margin: 10px 0;
+}
+
+main {
+    /* Ao declarar uma largura (menor que 100%) e margem automática, centralizamos o box/bloco */
+    width: 95%;
+    margin: auto;
+}
+
+h1, nav, h2, h3, button {
+    font-family: Orbitron, sans-serif;
+}
+
+h2, h3, p {padding: 1%, 0;}
+
+footer h2 {font-size: 1rem;}
+
+footer img { 
+    width: 30px;
+    /* margin-left: 0.5rem; */
+    /* margin-right: 0.5rem; */
+}
+
+footer p { font-size: 0.6rem;}
+
+section, figure { margin: 2% 0;}
+
+figcaption {
+    text-align: center;
+    font-weight: bold;
+}
+
+#voltar {
+    position: fixed;
+    /* coordenadas */
+    right: 5px;
+    bottom: 0;
+}
+
+#voltar a {
+    background-color: indianred;
+    padding: 5px;
+    border: solid 0 0 5px;
+    box-shadow: indigo 0 0 5px;
+    border-radius: 5px;
+}
+
+#voltar a:hover, #voltar a:focus {
+    background-color: black;
+    color: white;
+}
+
+/*  para facilitar a visualização das áreas dos elementos (o espaço que ocupam) */
+
+/* h1  { background-color: red;}
+h1 a { background-color: green;}
+nav { background-color: yellow;}
+nav a { background-color: rgb(77, 77, 182);} */
+
+h1, h1 a, nav, nav a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    height: 50px;
+}
+
+h1 {
+    padding: 5px 0;
+    font-size: 2.2rem;
+}
+
+h1 img {width: 50px;}
+
+nav a:hover, nav a:focus {
+    background-color: black;
+    color: white;
+
+}
+
+/* poderia ser: #nome, #email, #telefone, #assunto, #mensagem */
+input, textarea {
+    border: solid 2px;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 1.5%;
+    
+    /* não recomendável */
+    outline: darkgray;
+}
+ /* não recomendável */
+/* textarea {resize: none;} */
+
+label {font-weight: bold;}
+button {
+    /* border: none; */
+    padding: 10px;
+    font-weight: bold;
+    /* background-color: black;
+    color: white; */
+}
+
+button:hover, button:focus {background-color: darkblue;}
+
+/* Regras de Mídia Queries (Breakpoints) */
+/* 1º Breakpoit
+Tela a partir de 700px */
+/* para funcionar tem que fazer um ajuste no html: colocar o coteúdo do header em uma div */
+@media screen and (min-width: 700px){
+    header div {
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        margin: auto;
+    }
+
+    /* Flex Container */
+    .grupo {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    /* Itens (sações e os figures) */
+
+    .grupo section, .grupo figure {width: 49%;}
+}
+
+/* 2º Breakpoit (media Query)
+Tela a partir de 850px */
+@media screen and (min-width: 850px) {
+    html {font-size: 20px;}
+}
+
+/* 3º Breakpoit (media Query)
+Tela a partir de 1000px */
+@media screen and ( min-width: 1000px){
+    html {font-size: 22px;}
+    h1 img {width: auto;}
+    header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100000;
+    }
+
+    /* Como o header ficou fixo (regra anterior), precisamos compensar a distância do restante do conteúdo (os articles) usando espaçamento superior (padding-top */
+
+    #topo, #o-que-fazemos, #nossas-equipes, #contatos {
+        padding-top: 75px;
+    }
+
+    #voltar {display: none;}
+
+    header div, main {max-width: 1000px;}
+
+}
+
